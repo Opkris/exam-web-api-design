@@ -120,7 +120,7 @@ export class SignUp extends React.Component {
             <div>{confirmMsg}</div>
           </div>
           {error}
-          <div className="btn" onClick={this.doSignUp}>
+          <div className="btn" onClick={this.doSignUp} id="signUpBtn">
             Sign Up
           </div>
         </div>

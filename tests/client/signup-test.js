@@ -2,11 +2,9 @@ const React = require('react');
 const {mount} = require('enzyme');
 const {MemoryRouter} = require('react-router-dom');
 
-const {overrideFetch, asyncCheckCondition} = require('../mytest-utils');
 const {app} = require('../../src/server/app');
-
-
 const {SignUp} = require('../../src/client/signup');
+const {overrideFetch, asyncCheckCondition} = require('../mytest-utils');
 const {resetAllUsers, getUser, createUser} = require('../../src/server/repository');
 
 
@@ -21,7 +19,7 @@ function fillForm(driver, id, password, confirm){
     const signUpBtn = driver.find("#signUpBtn").at(0);
 
 
-    userIdInput.simulate('change', {target: {value: id}});
+    userIdInput.simulate("change", {target: {value: id}});
     passwordInput.simulate('change', {target: {value: password}});
     confirmInput.simulate('change', {target: {value: confirm}});
 
@@ -42,7 +40,7 @@ test("Test password mismatch", async () => {
 
     expect(driver.html().includes(mismatch)).toEqual(false);
 
-    fillForm(driver, "i_am_a_user", "theBestPasswordEver", "not-matching");
+    fillForm(driver, "goGatcha", "passwordIsNotAGoodPassword", "not-matching");
 
     const error = await asyncCheckCondition(
         () => {driver.update(); return driver.html().includes(mismatch)},

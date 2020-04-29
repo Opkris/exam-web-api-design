@@ -20,15 +20,13 @@ export class App extends React.Component {
             userCount: 1
         };
     }
-
-    componentDidMount() {
-        this.fetchAndUpdateUserInfo();
-    }
+    //
+    // componentDidMount() {
+    //     this.fetchAndUpdateUserInfo();
+    // }
 
     fetchAndUpdateUserInfo = async () => {
-
         const url = "/api/user";
-
         let response;
 
         try {

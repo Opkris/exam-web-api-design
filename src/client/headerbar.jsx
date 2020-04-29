@@ -24,7 +24,7 @@ export class HeaderBar extends React.Component {
             return;
         }
 
-        this.props.updateLoggedInUserId(null);
+        // this.props.updateLoggedInUserId(null);
         this.props.history.push("/");
     };
 
@@ -32,7 +32,7 @@ export class HeaderBar extends React.Component {
         return (
             <div className="header">
                 <div className={"headerBar"}>
-                    <Link className="home btn" to={"/home"}>
+                    <Link className="home btn " to={"/home"}>
                         Home
                     </Link>
                 </div>
@@ -41,7 +41,7 @@ export class HeaderBar extends React.Component {
                     !!!
                 </h3>
 
-                <div className="logOutBtn" onClick={this.doLogout}>
+                <div className="logOutBtn btn" onClick={this.doLogout}>
                     Logout
                 </div>
             </div>

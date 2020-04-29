@@ -17,6 +17,9 @@ export class DescriptionPage extends React.Component {
 
     componentDidMount() {
         this.fetchPokemon();
+        if (this.props.user) {
+            this.props.fetchAndUpdateUserInfo();
+        }
     }
 
     async fetchPokemon() {
