@@ -35,13 +35,13 @@ test('Test failed fetch', async () => {
   expect(html).toMatch('Issue');
 });
 
-test('Test display 1 meal using stub', async () => {
-  const meal = 'TacoBurger';
+test('Test display 1 pokemon using stub', async () => {
+  const pokemon = 'Charizard';
 
   stubFetch(
     200,
-    [{ id: 0, name: meal, price: '142', allergies: 'SM, G, M, HG' }],
-    (url) => url.endsWith('/api/meals')
+    [{ id: 6, name: pokemon, price: '1142', type: ["Fire", " Flying"], master: "" }],
+    (url) => url.endsWith('/api/pokemon')
   );
 
   const driver = mount(
@@ -55,7 +55,7 @@ test('Test display 1 meal using stub', async () => {
   const html = driver.html();
 
   //here we just check it appears somewhere in the updated HTML
-  expect(html).toMatch(meal);
+  expect(html).toMatch(pokemon);
 });
 
 // test('Test display meals using SuperTest', async () => {

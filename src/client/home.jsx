@@ -151,7 +151,7 @@ export class Home extends React.Component {
 
         if (response.status === 401) {
             //we are not logged in, or session did timeout
-            this.props.updateLoggedInUserId(null);
+            // this.props.updateLoggedInUserId(null);
             return;
         }
 
@@ -163,7 +163,7 @@ export class Home extends React.Component {
                 balance: payload.balance
             });
 
-            this.props.updateLoggedInUserId(payload.userId);
+            // this.props.updateLoggedInUserId(payload.userId);
         } else {
             this.setState({
                 errorMsg: "Issue with HTTP connection: status code " + response.status,
