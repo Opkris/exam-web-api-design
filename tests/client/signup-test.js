@@ -19,7 +19,7 @@ function fillForm(driver, id, password, confirm){
     const signUpBtn = driver.find("#signUpBtn").at(0);
 
 
-    userIdInput.simulate("change", {target: {value: id}});
+    userIdInput.simulate('change', {target: {value: id}});
     passwordInput.simulate('change', {target: {value: password}});
     confirmInput.simulate('change', {target: {value: confirm}});
 
@@ -40,7 +40,7 @@ test("Test password mismatch", async () => {
 
     expect(driver.html().includes(mismatch)).toEqual(false);
 
-    fillForm(driver, "goGatcha", "passwordIsNotAGoodPassword", "not-matching");
+    fillForm(driver, "pokeTrainer", "eve", "not-matching");
 
     const error = await asyncCheckCondition(
         () => {driver.update(); return driver.html().includes(mismatch)},
@@ -52,7 +52,7 @@ test("Test password mismatch", async () => {
 
 test("Create user", async () =>{
 
-    const userId = "dumDum";
+    const userId = "Ash";
     expect(getUser(userId)).toEqual(undefined);
 
     overrideFetch(app);
@@ -67,7 +67,7 @@ test("Create user", async () =>{
         </MemoryRouter>
     );
 
-    const password = "dumDumDum";
+    const password = "pikachu";
 
     fillForm(driver, userId, password, password);
 
@@ -80,7 +80,6 @@ test("Create user", async () =>{
 
     expect(getUser(userId).id).toEqual(userId);
 });
-
 
 test("Fail if user already exists", async () =>{
 

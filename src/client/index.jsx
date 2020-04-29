@@ -36,6 +36,7 @@ export class App extends React.Component {
         } catch (err) {
             this.setState({errorMsg: "Failed to connect to server: " + err});
             return;
+
         }
 
         if (response.status === 401) {

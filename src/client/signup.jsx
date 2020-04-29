@@ -12,9 +12,7 @@ export class SignUp extends React.Component {
       confirm: "",
       errorMsg: null
     };
-
   }
-
   onUserIdChange = (event) => {
     this.setState({ userId: event.target.value, errorMsg: null });
   };
@@ -73,12 +71,12 @@ export class SignUp extends React.Component {
   };
 
   render() {
-    let error = <div />;
+    let error = <div></div>;
     if (this.state.errorMsg) {
       error = (
-        <div className="errorMsg">
-          <p>{this.state.errorMsg}</p>
-        </div>
+          <div className="errorMsg">
+            <p>{this.state.errorMsg}</p>
+          </div>
       );
     }
 
@@ -100,6 +98,7 @@ export class SignUp extends React.Component {
               type="text"
               value={this.state.userId}
               onChange={this.onUserIdChange}
+              id="userIdInput"
             />
           </div>
           <div>
@@ -108,6 +107,7 @@ export class SignUp extends React.Component {
               type="password"
               value={this.state.password}
               onChange={this.onPasswordChange}
+              id="passwordInput"
             />
           </div>
           <div>
@@ -116,13 +116,14 @@ export class SignUp extends React.Component {
               type="password"
               value={this.state.confirm}
               onChange={this.onConfirmChange}
+              id="confirmInput"
             />
             <div>{confirmMsg}</div>
           </div>
           {error}
-          <div className="btn" onClick={this.doSignUp} id="signUpBtn">
+          <button className="button" onClick={this.doSignUp} id="signUpBtn">
             Sign Up
-          </div>
+          </button>
         </div>
       </div>
     );

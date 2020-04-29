@@ -1,11 +1,10 @@
 const React = require('react');
+const {mount} = require('enzyme');
+const {MemoryRouter} = require('react-router-dom');
 
-const { mount } = require('enzyme');
-const { MemoryRouter } = require('react-router-dom');
-
-const { HeaderBar } = require('../../src/client/headerbar');
-const { overrideFetch, asyncCheckCondition } = require('../mytest-utils');
-const { app } = require('../../src/server/app');
+const {HeaderBar} = require('../../src/client/headerbar');
+const {overrideFetch, asyncCheckCondition} = require('../mytest-utils');
+const {app} = require('../../src/server/app');
 
 const notLoggedInMsg = 'You are not logged in';
 

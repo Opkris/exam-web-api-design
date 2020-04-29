@@ -1,6 +1,10 @@
 import React from "react";
-import {Link, withRouter} from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
+/*
+    Just provide a header component for all pages, where we have a link to the
+    home-page, and login/signup/logout buttons.
+ */
 export class HeaderBar extends React.Component {
     constructor(props) {
         super(props);
@@ -24,45 +28,40 @@ export class HeaderBar extends React.Component {
             return;
         }
 
-        // this.props.updateLoggedInUserId(null);
+        this.props.updateLoggedInUserId(null);
         this.props.history.push("/");
     };
 
     renderLoggedIn(userId) {
         return (
-            <div className="header">
-                <div className={"headerBar"}>
-                    <Link className="home btn " to={"/home"}>
-                        Home
-                    </Link>
-                </div>
-                <h3 className="notLoggedInMsg">
-                    Welcome {userId}
-                    !!!
-                </h3>
-
-                <div className="logOutBtn btn" onClick={this.doLogout}>
+            <React.Fragment>
+                <p className="header-text">
+                    Welcome Trainer {userId} !!!
+                </p>
+                <button
+                    className="header-button"
+                    onClick={this.doLogout}
+                    id="logoutBtnId"
+                >
                     Logout
-                </div>
-            </div>
+                </button>
+            </React.Fragment>
         );
     }
 
     renderNotLoggedIn() {
         return (
-            <div className="header">
-                <div className="notLoggedInMsg">You are not logged in</div>
-
-                <div className="btnPart">
-                    <Link className="btn" to="/login">
+            <React.Fragment>
+                <p className="header-text">You are not logged in</p>
+                <div className="action-buttons">
+                    <Link className="header-button" to="/login" tabIndex="0">
                         LogIn
                     </Link>
-
-                    <Link className="btn" to="/signup">
+                    <Link className="header-button" to="/signup" tabIndex="0">
                         SignUp
                     </Link>
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 
