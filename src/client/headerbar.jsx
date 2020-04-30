@@ -19,12 +19,12 @@ export class HeaderBar extends React.Component {
         try {
             response = await fetch(url, {method: "post"});
         } catch (err) {
-            alert("Failed to connect to server: " + err);
+            console.log("Failed to connect to server: " + err);
             return;
         }
 
         if (response.status !== 204) {
-            alert("Error when connecting to server: status code " + response.status);
+            console.log("Error when connecting to server: status code " + response.status);
             return;
         }
 
@@ -38,13 +38,26 @@ export class HeaderBar extends React.Component {
                 <p className="header-text">
                     Welcome Trainer {userId} !!!
                 </p>
+
+                <Link to={"/home"}>
+                    <button className="btn btnM">
+                        Home
+                    </button>
+                </Link>
+
                 <button
-                    className="header-button"
+                    className="header-button btn btnM"
                     onClick={this.doLogout}
                     id="logoutBtnId"
                 >
                     Logout
                 </button>
+
+                <Link to={"/"}>
+                    <button className="btn btnM">
+                         Pokèmon
+                    </button>
+                </Link>
             </React.Fragment>
         );
     }
@@ -54,10 +67,10 @@ export class HeaderBar extends React.Component {
             <React.Fragment>
                 <p className="header-text">You are not logged in</p>
                 <div className="action-buttons">
-                    <Link className="header-button" to="/login" tabIndex="0">
+                    <Link className="header-button btn btM" to="/login" tabIndex="0">
                         LogIn
                     </Link>
-                    <Link className="header-button" to="/signup" tabIndex="0">
+                    <Link className="header-button btn btnM" to="/signup" tabIndex="0">
                         SignUp
                     </Link>
                 </div>

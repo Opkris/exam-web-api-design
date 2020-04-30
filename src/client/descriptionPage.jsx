@@ -96,7 +96,6 @@ export class DescriptionPage extends React.Component {
                 />
                 <div className="mainContent">
                 </div>
-                    <p>Your balance is currently: {this.state.balance}</p>
                     <h2>Pokèmon Available</h2>
                     {table}
                 </div>

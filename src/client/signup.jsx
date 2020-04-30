@@ -1,7 +1,6 @@
 import React from "react";
 import HeaderBar from "./headerbar";
 import {Link, withRouter} from 'react-router-dom';
-
 export class SignUp extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +12,7 @@ export class SignUp extends React.Component {
       errorMsg: null
     };
   }
+
   onUserIdChange = (event) => {
     this.setState({ userId: event.target.value, errorMsg: null });
   };
@@ -67,7 +67,7 @@ export class SignUp extends React.Component {
 
     this.setState({ errorMsg: null });
     this.props.updateLoggedInUserId(userId);
-    this.props.history.push("/home");
+    this.props.history.push("/");
   };
 
   render() {
@@ -121,6 +121,7 @@ export class SignUp extends React.Component {
             <div>{confirmMsg}</div>
           </div>
           {error}
+
           <button className="button" onClick={this.doSignUp} id="signUpBtn">
             Sign Up
           </button>
