@@ -1,3 +1,5 @@
+Kandidatnr: 338
+
 ### Gotcha game
  I have created a Gotcha game, its a collection of 21 unique pokemons with there own unique name
  and they all have a price / value, and a short description for what type of pokemon they are.
