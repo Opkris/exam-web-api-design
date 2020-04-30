@@ -1,6 +1,10 @@
+// this class is modified from Andrea Arcuri's repository https://github.com/arcuri82/web_development_and_api_design
+
+
 import React from "react";
+import { withRouter } from "react-router-dom";
 import HeaderBar from "./headerbar";
-import {Link, withRouter} from 'react-router-dom';
+
 export class SignUp extends React.Component {
   constructor(props) {
     super(props);
@@ -9,7 +13,7 @@ export class SignUp extends React.Component {
       userId: "",
       password: "",
       confirm: "",
-      errorMsg: null
+      errorMsg: null,
     };
   }
 
@@ -43,9 +47,9 @@ export class SignUp extends React.Component {
       response = await fetch(url, {
         method: "post",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
       });
     } catch (err) {
       this.setState({ errorMsg: "Failed to connect to server: " + err });
@@ -60,14 +64,13 @@ export class SignUp extends React.Component {
     if (response.status !== 201) {
       this.setState({
         errorMsg:
-          "Error when connecting to server: status code " + response.status
+            "Error when connecting to server: status code " + response.status,
       });
       return;
     }
 
     this.setState({ errorMsg: null });
-    this.props.updateLoggedInUserId(userId);
-    this.props.history.push("/");
+    this.props.history.push("/home");
   };
 
   render() {
@@ -86,47 +89,45 @@ export class SignUp extends React.Component {
     }
 
     return (
-      <div>
-        <HeaderBar
-          userId={this.props.userId}
-          updateLoggedInUserId={this.props.updateLoggedInUserId}
-        />
-        <div className="signupArea">
+        <div className="center">
+          <HeaderBar
+              userId={this.props.userId}
+          />
           <div>
             <p>User Id:</p>
             <input
-              type="text"
-              value={this.state.userId}
-              onChange={this.onUserIdChange}
-              id="userIdInput"
+                type="text"
+                value={this.state.userId}
+                onChange={this.onUserIdChange}
+                id="userIdInput"
             />
           </div>
           <div>
             <p>Password:</p>
             <input
-              type="password"
-              value={this.state.password}
-              onChange={this.onPasswordChange}
-              id="passwordInput"
+                type="password"
+                value={this.state.password}
+                onChange={this.onPasswordChange}
+                id="passwordInput"
             />
           </div>
           <div>
             <p>Confirm:</p>
             <input
-              type="password"
-              value={this.state.confirm}
-              onChange={this.onConfirmChange}
-              id="confirmInput"
+                type="password"
+                value={this.state.confirm}
+                onChange={this.onConfirmChange}
+                id="confirmInput"
             />
             <div>{confirmMsg}</div>
           </div>
+
           {error}
 
-          <button className="button" onClick={this.doSignUp} id="signUpBtn">
+          <button className="button btn btnM" onClick={this.doSignUp} id="signUpBtn">
             Sign Up
           </button>
         </div>
-      </div>
     );
   }
 }

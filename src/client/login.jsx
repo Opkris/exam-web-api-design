@@ -1,3 +1,5 @@
+// this class is modified from Andrea Arcuri's repository https://github.com/arcuri82/web_development_and_api_design
+
 import React from "react";
 import {Link, withRouter} from "react-router-dom";
 

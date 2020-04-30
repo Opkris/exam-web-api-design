@@ -1,4 +1,5 @@
-// Origin: shared/mytest-utils.js
+// this file is modified from Andrea Arcuri's repository https://github.com/arcuri82/web_development_and_api_design
+
 
 import {withRouter} from "react-router-dom";
 import {Login} from "../src/client/login";
@@ -6,14 +7,6 @@ import {Login} from "../src/client/login";
 const request = require('supertest');
 
 
-/*
-    Here, we stub away the calls to "fetch", as not available in NodeJS (ie, they
-    are specific to the browser, like alert()).
-
-    A complication here is that fetch() returns a Promise. Once such Promise is resolved,
-    accessing response.json() is itself a function returning another Promise.
-    Here, we resolve these Promises immediately.
- */
 export function stubFetch(
     // http status to return, eg 200
     status,
@@ -87,12 +80,6 @@ export function overrideFetch(app){
     };
 }
 
-/*
-    Return a Promise on the boolean result of the given predicate.
-    We wait up to totalTimeMs for the predicate to evaluate to true.
-    We check the predicate every intervalMS.
-    If timeout elapses, then the Promise resolves to false.
- */
 export function asyncCheckCondition(predicate, totalTimeMS, intervalMS){
 
     const start = Date.now();
@@ -115,18 +102,6 @@ export function recursiveTimeoutCheck(predicate, totalTimeMS, intervalMS, start,
     }
 }
 
-/*
-    Tricky: even when simulating a click, we are still on a single thread.
-    So, not all Promises in the component might have been resolved.
-    Without getting a reference to such Promises, we cannot "await" for them
-    directly.
-    So, we create a new Promise which is going to be executed and resolved in
-    the next step of the event-loop. Waiting for it will imply that all currently
-    registered Promises are resolved.
-    However, such an approach does NOT work when you can have tasks scheduled
-    with setTimeout(), or when there are chains of Promises revolved after different
-    ticks of the main event-loop.
- */
 export function flushPromises() {
     return new Promise(resolve => setImmediate(resolve));
 }

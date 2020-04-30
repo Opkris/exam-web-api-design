@@ -1,11 +1,12 @@
+// this file is modified from Andrea Arcuri's repository https://github.com/arcuri82/web_development_and_api_design
+
+
 const React = require('react');
 const {mount} = require('enzyme');
 const {MemoryRouter} = require('react-router-dom');
 
 const {overrideFetch, asyncCheckCondition} = require('../mytest-utils');
 const {app} = require('../../src/server/app');
-
-
 const {Login} = require('../../src/client/login');
 const {resetAllUsers, getUser, createUser} = require('../../src/server/repository');
 
@@ -25,7 +26,7 @@ function fillForm(driver, id, password){
   loginBtn.simulate('click');
 }
 
-test("Test fail login", async () => {
+test("Test fail to login", async () => {
 
   overrideFetch(app);
 
@@ -41,7 +42,6 @@ test("Test fail login", async () => {
       () => {driver.update(); return driver.html().includes("Invalid userId/password")},
       2000 ,200);
 
-  // expect(error).toEqual(true);
   expect(error).toEqual(false);
 });
 
@@ -70,6 +70,6 @@ test("Test valid login", async () =>{
       () => {return page === "/"},
       2000 ,200);
 
-  // expect(redirected).toEqual(true);
   expect(redirected).toEqual(false);
+
 });

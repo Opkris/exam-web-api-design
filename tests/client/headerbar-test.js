@@ -1,3 +1,6 @@
+// this file is modified from Andrea Arcuri's repository https://github.com/arcuri82/web_development_and_api_design
+
+
 const React = require('react');
 const {mount} = require('enzyme');
 const {MemoryRouter} = require('react-router-dom');
@@ -63,4 +66,6 @@ test("Test do logout", async () => {
     const displayed = driver.html().includes(userId);
     return !displayed;
   }, 2000, 200);
+  expect(changed).toEqual(false);
+
 });

@@ -1,3 +1,6 @@
+// this class is modified from Andrea Arcuri's repository https://github.com/arcuri82/web_development_and_api_design
+
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -10,8 +13,7 @@ const Repository = require('./repository');
 
 
 Repository.createUser("Kristoffer", "1");
-Repository.createUser("Bank", "1");
-Repository.createUser("1", "1");
+Repository.createUser("Bank", "pwBank42NotLife");
 const app = express();
 
 /*
@@ -106,6 +108,21 @@ passport.deserializeUser(function (id, done) {
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+
+
+app.delete('/api/poke/:id', (req, res) => {
+
+    const deleted = Repository.deletePokemon(req.params.id);
+    if (deleted) {
+        res.status(204);
+    } else {
+        //this can happen if book already deleted or does not exist
+        res.status(404);
+    }
+    res.send();
+});
 
 
 

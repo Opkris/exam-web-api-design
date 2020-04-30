@@ -1,3 +1,6 @@
+// this class is modified from Andrea Arcuri's repository https://github.com/arcuri82/web_development_and_api_design
+
+
 import React from "react";
 import HeaderBar from "./headerbar";
 import {Link, withRouter} from 'react-router-dom';
@@ -18,7 +21,7 @@ export class DescriptionPage extends React.Component {
     componentDidMount() {
         this.fetchPokemon();
         if (this.props.user) {
-            this.props.fetchAndUpdateUserInfo();
+            // this.props.fetchAndUpdateUserInfo();
         }
     }
 
@@ -87,8 +90,6 @@ export class DescriptionPage extends React.Component {
             </div>; // end table
         }
         return (
-
-
             <div>
                 <HeaderBar
                     userId={this.props.userId}

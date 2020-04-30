@@ -1,3 +1,6 @@
+// this class is modified from Andrea Arcuri's repository https://github.com/arcuri82/web_development_and_api_design
+
+
 import React from "react";
 import HeaderBar from "./headerbar";
 import {Link, withRouter} from 'react-router-dom';
@@ -54,84 +57,25 @@ export class Home extends React.Component {
 
     salePokemon = async (id) => {
 
-        const url = "/api/pokemon/" + id;
+        const url = "/api/poke/" + id;
 
         let response;
 
         try {
             response = await fetch(url, {method: "delete"});
         } catch (err) {
-            alert("Delete operation failed: " + err + " daimn");
+            alert("Delete operation failed: " + err);
             return false;
         }
 
         if (response.status !== 204) {
-            alert(" !204 Delete operation failed: status code " + response.status);
+            alert("Delete operation failed: status code " + response.status);
             return false;
         }
 
         this.fetchPokemon();
 
         return true;
-    };
-
-
-
-
-
-
-
-
-
-
-
-
-    onSendToChange = (event) => {
-        this.setState({sendTo: event.target.value});
-    };
-
-    onAmountToSendChange = (event) => {
-        this.setState({amountToSend: event.target.value});
-    };
-
-    transferMoney = async () => {
-        if (!this.props.userId) {
-            return;
-        }
-
-        const url = "/api/transfers";
-
-        const payload = {to: this.state.sendTo, amount: this.state.amountToSend};
-
-        let response;
-
-        try {
-            response = await fetch(url, {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(payload)
-            });
-        } catch (err) {
-            this.setState({errorMsg: "Failed to connect to server: " + err});
-            return;
-        }
-
-        if (response.status === 401) {
-            this.setState({errorMsg: "Invalid userId/password"});
-            return;
-        }
-
-        if (response.status !== 204) {
-            this.setState({
-                errorMsg:
-                    "Error when connecting to server: status code " + response.status
-            });
-            return;
-        }
-
-        this.updateBalance();
     };
 
     async updateBalance() {
@@ -144,7 +88,8 @@ export class Home extends React.Component {
         } catch (err) {
             this.setState({
                 errorMsg: "ERROR when retrieving balance: " + err,
-                balance: null
+                balance: null,
+                id: null
             });
             return;
         }
@@ -160,21 +105,48 @@ export class Home extends React.Component {
 
             this.setState({
                 errorMsg: null,
-                balance: payload.balance
+                balance: payload.balance,
             });
 
-            // this.props.updateLoggedInUserId(payload.userId);
+            this.props.updateLoggedInUserId(payload.userId);
         } else {
             this.setState({
                 errorMsg: "Issue with HTTP connection: status code " + response.status,
                 balance: null
             });
         }
-    }
+    };
+
+    deleteUser = async (id) => {
+
+        const url = "/api/userDel/" + id;
+
+        let response;
+
+        try {
+            response = await fetch(url, {method: "delete"});
+        } catch (err) {
+            alert("Delete operation failed: " + err);
+            return false;
+        }
+
+        if (response.status !== 204) {
+            alert("Delete operation failed: status code " + response.status);
+            return false;
+        }
+
+
+        return true;
+    };
+
+
+
 
     dontShowLootBox() {
         return(
-          <p></p>
+            <div>
+          <p> you need 200$ to open a new loot Box</p>
+            </div>
         );
     }
 
@@ -182,7 +154,7 @@ export class Home extends React.Component {
         return(
             <div>
                 <Link to={"/lootBox"}>
-                    <button className="btn btnM">
+                    <button className="btn btnM" id="lootBoxBtn">
                         <i className="fas fa-box"></i>
                     </button>
                 </Link>
@@ -197,7 +169,7 @@ export class Home extends React.Component {
         if (this.state.error !== null) {
             table = <p>{this.state.error}</p>;
         } else if (this.state.pokemon === null || this.state.pokemon.length === 0) {
-            table = <p>There is no Pokèmon registered in the database</p>;
+            table = <p>There is no Pokèmon registered in your database</p>;
         } else {
 
             table = <div>
@@ -229,7 +201,7 @@ export class Home extends React.Component {
             </div>; // end table
         }
 
-        if (this.state.balance < 100) {
+        if (this.state.balance < 200) {
             content = this.dontShowLootBox();
         } else {
             content = this.showLootBox();
@@ -243,6 +215,9 @@ export class Home extends React.Component {
                     userId={this.props.userId}
                 />
                 <p>Your balance is currently: {this.state.balance}</p>
+                <div>
+
+                </div>
                 <h2>Your Pokèmon's</h2>
                 {content}
                 {table}

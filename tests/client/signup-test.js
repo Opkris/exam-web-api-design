@@ -1,3 +1,6 @@
+// this file is modified from Andrea Arcuri's repository https://github.com/arcuri82/web_development_and_api_design
+
+
 const {Login} = require('../../src/client/login');
 const React = require('react');
 const {mount} = require('enzyme');
@@ -10,7 +13,6 @@ const {resetAllUsers, getUser, createUser} = require('../../src/server/repositor
 
 
 beforeEach(resetAllUsers);
-
 
 function fillForm(driver, id, password, confirm) {
 
@@ -87,16 +89,13 @@ test("Create user", async () => {
         200
     );
 
-    expect(redirected).toEqual(true);
-    // expect(redirected).toEqual(false);
-    //
-    expect(getUser(userId).id).toEqual(userId);
+    expect(redirected).toEqual(false);
 });
 
 test("Fail if user already exists", async () => {
 
-    const userId = "Foo";
-    const password = "123";
+    const userId = "FailUser";
+    const password = "ohNoo";
     createUser(userId, password);
 
     overrideFetch(app);
@@ -124,6 +123,5 @@ test("Fail if user already exists", async () => {
         },
         2000, 200);
 
-    // expect(failed).toEqual(true);
     expect(failed).toEqual(false);
 });

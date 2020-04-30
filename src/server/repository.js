@@ -1,10 +1,4 @@
-
-/*
-    Here we "simulate" a database with in-memory Map.
-    Furthermore, we do not deal with the "proper" handling of
-    passwords. Passwords should NEVER be saved in plain text,
-    but rather hashed with secure algorithms like BCrypt.
- */
+// this class is modified from Andrea Arcuri's repository https://github.com/arcuri82/web_development_and_api_design
 
 const users = new Map();
 
@@ -22,12 +16,6 @@ function verifyUser(id, password){
         return false;
     }
 
-    /*
-        WARNING: remember that those passwords should be hashed,
-        with salt and pepper...
-        But we are not dealing with backend details
-        in this course, like secure storage of passwords
-     */
     return user.password === password;
 }
 
@@ -321,8 +309,6 @@ function getRandomPokemon() {
 
         const newPokemon = Math.floor(pokemonArray.length * Math.random());
 
-        // console.log(pokemonsArray[newPokemon]);
-
         randomPokemonArray.push(pokemonArray[newPokemon]);
         myPokemonArray.push(pokemonArray[newPokemon]);
         i++;
@@ -331,11 +317,6 @@ function getRandomPokemon() {
 }
 
 
-function deletePokemon(id){
-
-    return pokemon.delete(id);
-}
-
 function getPokemon(id){
 
     return pokemon.get(id)
@@ -343,4 +324,4 @@ function getPokemon(id){
 
 
 module.exports = {getUser, verifyUser, createUser, transferMoney, getAllPokemons, getMyPokemon, getRandomPokemon,
-    getPokemon, deletePokemon , resetAllUsers};
+    getPokemon, resetAllUsers};
