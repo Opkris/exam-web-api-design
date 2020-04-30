@@ -13,8 +13,11 @@
 2. login page.
 3. sign in page.
 4. Home page, user can see there own items.
-5. lootBox page who display the new loot. if the user dont have the balance to a new lootBox, it wont render. 
+5. lootBox page who display the new loot. if the user dont have the balance to a new lootBox, the button wont render to this page. 
 6. buttons to navigate between pages.  
+
+the application don't have eny edit or delete function at this point. The application wil show a delete button in home, 
+but it have no functionality, but the intent was to delete and get the value/ price back.  
 
 ### Code
 Most of the code are reused from my one of my own repository, but allot of the are copied from
@@ -119,6 +122,6 @@ Andrea Arcuri's repository "web_development_and_api_design" folders:
 ###Known Bug(s)
 
 * if you log out from "homepage" the user info are not updated at once, so you can "Rome around", and even buy 1 lootBox
- before the page is updated. and it will look like the header buttons get stuck, but they dont. 
+ before the page is updated. and it will look like the header buttons get stuck, tap logout 2 times to fix it.
  
   

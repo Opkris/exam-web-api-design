@@ -76,7 +76,7 @@ const pokemonArray = [
         id: 1,
         pokedex: "001",
         name: "Bulbasaur",
-        price: "99",
+        price: 99,
         type: [
             "Grass",
             " Poison"
@@ -87,7 +87,7 @@ const pokemonArray = [
         id: 2,
         pokedex: "002",
         name: "Ivysaur",
-        price: "189",
+        price: 199,
         type: [
             "Grass",
             " Poison"
@@ -98,7 +98,7 @@ const pokemonArray = [
         id: 3,
         pokedex: "003",
         name: "Venusaur",
-        price: "1089",
+        price: 1589,
         type: [
             "Grass",
             " Poison"
@@ -129,7 +129,7 @@ const pokemonArray = [
         id: 6,
         pokedex: "006",
         name: "Charizard",
-        price: 1089,
+        price: 1589,
         type: [
             "Fire",
             " Flying"
@@ -150,7 +150,7 @@ const pokemonArray = [
         id: 8,
         pokedex: "008",
         name: "Wartortle",
-        price: 99,
+        price: 199,
         type: [
             "Water"
         ],
@@ -160,7 +160,7 @@ const pokemonArray = [
         id: 9,
         pokedex: "009",
         name: "Blastoise",
-        price: 99,
+        price: 1589,
         type: [
             "Water"
         ],
@@ -180,7 +180,7 @@ const pokemonArray = [
         id: 11,
         pokedex: "011",
         name: "Metapod",
-        price: 99,
+        price: 139,
         type: [
             "Bug"
         ],
@@ -190,7 +190,7 @@ const pokemonArray = [
         id: 12,
         pokedex: "012",
         name: "Butterfree",
-        price: 99,
+        price: 1389,
         type: [
             "Bug",
             " Flying"
@@ -211,7 +211,7 @@ const pokemonArray = [
         id: 14,
         pokedex: "014",
         name: "Kakuna",
-        price: 99,
+        price: 139,
         type: [
             "Bug",
             " Poison"
@@ -222,7 +222,7 @@ const pokemonArray = [
         id: 15,
         pokedex: "015",
         name: "Beedrill",
-        price: 99,
+        price: 1089,
         type: [
             "Bug",
             " Poison"
@@ -244,7 +244,7 @@ const pokemonArray = [
         id: 17,
         pokedex: "017",
         name: "Pidgeotto",
-        price: 99,
+        price: 199,
         type: [
             "Normal",
             " Flying"
@@ -255,7 +255,7 @@ const pokemonArray = [
         id: 18,
         pokedex: "018",
         name: "Pidgeot",
-        price: 99,
+        price: 1289,
         type: [
             "Normal",
             " Flying"
