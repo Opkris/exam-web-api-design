@@ -67,7 +67,7 @@ Andrea Arcuri's repository "web_development_and_api_design" folders:
 
 
 ### R4: 
--[ ] Each REST endpoint MUST handle authentication (401), and possibly authorization (403) checks.
+-[X] Each REST endpoint MUST handle authentication (401), and possibly authorization (403) checks.
     If an endpoint is supposed to be “open” to everyone, explicitly add a code-comment for it in its
     Express handler.
 -[ ] Create a test class called security-test.js, where each endpoint is tested for when it returns 401
